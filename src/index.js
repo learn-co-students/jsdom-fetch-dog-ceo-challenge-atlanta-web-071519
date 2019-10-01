@@ -12,8 +12,14 @@ function fetchPics() {
     fetch(IMGURL)
     .then(resp => resp.json())
     .then(pics => {
-        pics.message.forEach(pic => addPic(pic))
-
+        pics.message.forEach(pic => renderPic(pic))
+        console.log('pics fetched')
     })
 }
 
+function renderPic(dogPicUrl) {
+    let dogContainer = document.querySelector('#dog-image-container')
+    let newImgEl = document.createElement('img')
+    newImgEl.src = dogPicUrl
+    dogContainer.appendChild(newImgEl)
+}
